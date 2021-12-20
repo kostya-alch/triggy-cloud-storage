@@ -8,5 +8,11 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "config": "^3.3.6",
+    "express": "^4.17.2",
+    "mongoose": "^6.1.2",
+    "nodemon": "^2.0.15"
+  }
 }
