@@ -1,4 +1,5 @@
 {
   "serverPort": 5000,
-  "dbUrl": "mongodb+srv://furakun:34mo56@cloud.nhfdt.mongodb.net/cloud?retryWrites=true&w=majority"
+  "dbUrl": "mongodb+srv://furakun:34mo56@cloud.nhfdt.mongodb.net/cloud?retryWrites=true&w=majority",
+  "secretKey": "mern-secret-key"
 }
