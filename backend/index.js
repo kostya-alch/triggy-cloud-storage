@@ -4,7 +4,9 @@ const config = require('config'); // подключили все зависим�
 const authRouter = require('./routes/auth.router');
 const app = express();
 const PORT = config.get('serverPort');
+const corsMiddleware = require('./middleware/cors.middleware');
 
+app.use(corsMiddleware);
 app.use(express.json());
 app.use('/api/auth', authRouter);
 
