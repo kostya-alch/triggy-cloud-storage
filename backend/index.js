@@ -12,11 +12,14 @@ app.use('/api/auth', authRouter);
 
 const start = async () => {
   try {
-    mongoose.connect(config.get('dbUrl'));
+    await mongoose.connect(config.get('dbUrl'));
+
     app.listen(PORT, () => {
       console.log(`server ready on ${PORT}`);
     });
-  } catch (error) {}
+  } catch (error) {
+    console.log(error)
+  }
 }; // коннект к базе данных
 
 start();
