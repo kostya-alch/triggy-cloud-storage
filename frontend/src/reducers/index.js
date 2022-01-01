@@ -6,7 +6,7 @@ import userReducer from './userReducer';
 
 const rootReducer = combineReducers({
   user: userReducer,
-  file: fileReducer,
+  files: fileReducer,
 });
 
 export const store = createStore(
