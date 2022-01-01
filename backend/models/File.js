@@ -1,4 +1,5 @@
 const { model, Schema, ObjectId } = require('mongoose');
+// модель базы данных файла
 
 const File = new Schema({
   name: { type: String, required: true },

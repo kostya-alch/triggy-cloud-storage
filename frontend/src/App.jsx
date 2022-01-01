@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import Navbar from './components/Navbar/Navbar';
 import styles from './App.module.scss'
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import Registration from './components/Registration/Registration';
 import Login from './components/Login/Login';
 import { useDispatch, useSelector } from 'react-redux';
 import { auth } from './actions/user';
+import Disk from './components/Disk/Disk';
 
 
 const App = () => {
@@ -21,12 +22,17 @@ const App = () => {
         <Navbar />
         <div className={styles.wrap}>
           {
-            !isAuth && <Switch>
-              <Route path='/registration' component={Registration} />
-              <Route path='/login' component={Login} />
-            </Switch>
+            !isAuth
+              ? <Switch>
+                <Route path='/registration' component={Registration} />
+                <Route path='/login' component={Login} />
+                <Redirect to='/login' />
+              </Switch>
+              : <Switch>
+                <Route exact path='/' component={Disk} />
+                <Redirect to="/" />
+              </Switch>
           }
-
         </div>
       </div>
     </BrowserRouter>
