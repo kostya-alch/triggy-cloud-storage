@@ -7,7 +7,7 @@ import downloadBtn from '../../../assets/img/download.svg'
 import deleteBtn from '../../../assets/img/delete.svg'
 
 import styles from './File.module.scss'
-import { downloadFile } from '../../../actions/file'
+import { deleteFile, downloadFile } from '../../../actions/file'
 
 const File = ({ file }) => {
    const dispatch = useDispatch()
@@ -24,6 +24,10 @@ const File = ({ file }) => {
       event.stopPropagation()
       downloadFile(file)
    }
+   const deleteClickHandler = (event) => {
+      event.stopPropagation()
+      dispatch(deleteFile(file))
+   }
    return (
       <div className={styles.file} onClick={() => openDirHandler(file)}>
          <img src={file.type === 'dir' ? dirLogo : fileLogo}
@@ -34,7 +38,7 @@ const File = ({ file }) => {
          {file.type !== 'dir' && <button onClick={(event) => downloadClickHandler(event)} className={[styles.btn, styles.download].join(' ')}>
             <img src={downloadBtn} alt="Скачать" />
          </button>}
-         <button className={[styles.btn, styles.delete].join(' ')}>
+         <button className={[styles.btn, styles.delete].join(' ')} onClick={(event) => deleteClickHandler(event)}>
             <img src={deleteBtn} alt="Удалить" />
          </button>
       </div>
