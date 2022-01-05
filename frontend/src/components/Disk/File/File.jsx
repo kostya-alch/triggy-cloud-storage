@@ -10,13 +10,15 @@ const File = ({ file }) => {
    const dispatch = useDispatch()
    const currentDir = useSelector(state => state.files.currentDir)
 
-   const openDirHandler = () => {
-      dispatch(pushToStackActionCreator(currentDir))
-      dispatch(currentDirActionCreator(file._id))
-
+   const openDirHandler = (file) => {
+      if (file.type === 'dir') {
+         dispatch(pushToStackActionCreator(currentDir))
+         dispatch(currentDirActionCreator(file._id))
+      }
    }
+
    return (
-      <div className={styles.file} onClick={file.type === 'dir' ? () => openDirHandler() : ''}>
+      <div className={styles.file} onClick={() => openDirHandler(file)}>
          <img src={file.type === 'dir' ? dirLogo : fileLogo}
             alt="File" className={styles.img} />
          <div className={styles.name}>{file.name}</div>
