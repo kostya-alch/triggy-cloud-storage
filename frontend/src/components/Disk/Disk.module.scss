@@ -22,3 +22,14 @@
     margin-left: 10px;
   }
 }
+
+.drop_area {
+  width: 100%;
+  height: calc(100vh - 50px - 40px);
+  margin: 20px;
+  border: 2px dashed $font-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+}

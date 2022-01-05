@@ -6,7 +6,7 @@ import styles from './FileList.module.scss'
 const FileList = () => {
 
    const files = useSelector(state => state.files.files)
-      .map(file => <File file={file} key={file.id} />)
+      .map(file => <File key={file.id} file={file} />)
    return (
       <div className={styles.filelist}>
          <div className={styles.header}>
