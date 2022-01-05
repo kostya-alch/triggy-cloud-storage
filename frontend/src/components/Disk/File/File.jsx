@@ -3,8 +3,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import dirLogo from '../../../assets/img/file.svg'
 import fileLogo from '../../../assets/img/img.svg'
 import { currentDirActionCreator, pushToStackActionCreator } from '../../../reducers/fileReducer'
+import downloadBtn from '../../../assets/img/download.svg'
+import deleteBtn from '../../../assets/img/delete.svg'
 
 import styles from './File.module.scss'
+import { downloadFile } from '../../../actions/file'
 
 const File = ({ file }) => {
    const dispatch = useDispatch()
@@ -17,6 +20,10 @@ const File = ({ file }) => {
       }
    }
 
+   const downloadClickHandler = (event) => {
+      event.stopPropagation()
+      downloadFile(file)
+   }
    return (
       <div className={styles.file} onClick={() => openDirHandler(file)}>
          <img src={file.type === 'dir' ? dirLogo : fileLogo}
@@ -24,6 +31,12 @@ const File = ({ file }) => {
          <div className={styles.name}>{file.name}</div>
          <div className={styles.date}>{file.date.slice(0, 10)}</div>
          <div className={styles.size}>{file.size}</div>
+         {file.type !== 'dir' && <button onClick={(event) => downloadClickHandler(event)} className={[styles.btn, styles.download].join(' ')}>
+            <img src={downloadBtn} alt="Скачать" />
+         </button>}
+         <button className={[styles.btn, styles.delete].join(' ')}>
+            <img src={deleteBtn} alt="Удалить" />
+         </button>
       </div>
    )
 }

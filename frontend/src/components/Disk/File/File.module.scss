@@ -12,6 +12,7 @@
   }
   .img {
     justify-self: center;
+    padding: 8px 0;
   }
 
   .date {
@@ -21,5 +22,29 @@
   .size {
     grid-column-start: 6;
     justify-self: center;
+  }
+  .btn {
+    display: none;
+    width: 58px;
+    height: 34px;
+    cursor: pointer;
+    margin: 0 auto;
+    border-radius: 37px;
+    border: 1px solid $font-color;
+    padding: 7px;
+  }
+  &:hover .date {
+    grid-column-start: 3;
+  }
+  &:hover .size {
+    grid-column-start: 4;
+  }
+  &:hover .download {
+    grid-column-start: 5;
+    display: block;
+  }
+  &:hover .delete {
+    grid-column-start: 6;
+    display: block;
   }
 }
