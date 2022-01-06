@@ -4,6 +4,11 @@ import {
   deleteFileActionCreator,
   setFileActionCreator,
 } from '../reducers/fileReducer';
+import {
+  addUploadActionCreator,
+  changeUploadActionCreator,
+  showUploadActionCreator,
+} from '../reducers/uploadReducer';
 
 export const instanceAxios = axios.create({
   baseURL: 'http://localhost:5000/api/',
@@ -46,6 +51,13 @@ export function uploadFile(file, dirId) {
       if (dirId) {
         formData.append('parent', dirId);
       }
+      const uploadFile = {
+        name: file.name,
+        progress: 0,
+        id: Date.now() + file.size,
+      };
+      dispatch(showUploadActionCreator());
+      dispatch(addUploadActionCreator(uploadFile));
       const response = await instanceAxios.post(`files/upload`, formData, {
         onUploadProgress: (progressEvent) => {
           const totalLength = progressEvent.lengthComputable
@@ -55,10 +67,10 @@ export function uploadFile(file, dirId) {
                 'x-decompressed-content-length'
               );
           if (totalLength) {
-            let progress = Math.round(
+            uploadFile.progress = Math.round(
               (progressEvent.loaded * 100) / totalLength
             );
-            console.log(progress);
+            dispatch(changeUploadActionCreator(uploadFile));
           }
         },
       });
