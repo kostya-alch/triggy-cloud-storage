@@ -14,7 +14,7 @@ export default function userReducer(state = initialState, action) {
     case SHOW_UPLOADER:
       return { ...state, isVisible: true };
     case HIDE_UPLOADER:
-      return { ...state, isVisible: false };
+      return { ...state, isVisible: false, files: [] };
     case ADD_UPLOAD_FILE:
       return {
         ...state,
