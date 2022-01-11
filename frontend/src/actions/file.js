@@ -1,5 +1,9 @@
 import axios from 'axios';
 import {
+  hideLoaderActionCreator,
+  showLoaderActionCreator,
+} from '../reducers/appReducer';
+import {
   addFileActionCreator,
   deleteFileActionCreator,
   setFileActionCreator,
@@ -18,6 +22,7 @@ export const instanceAxios = axios.create({
 export function getFiles(dirId, sort) {
   return async (dispatch) => {
     try {
+      dispatch(showLoaderActionCreator());
       let url = 'http://localhost:5000/api/files';
       if (dirId) {
         url = `http://localhost:5000/api/files?parent=${dirId}`;
@@ -32,6 +37,8 @@ export function getFiles(dirId, sort) {
       dispatch(setFileActionCreator(response.data));
     } catch (error) {
       alert(error.response.data.message);
+    } finally {
+      dispatch(hideLoaderActionCreator());
     }
   };
 }

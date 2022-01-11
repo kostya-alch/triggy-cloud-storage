@@ -14,6 +14,7 @@ const Disk = () => {
    const dispatch = useDispatch()
    const currentDir = useSelector(state => state.files.currentDir)
    const dirStack = useSelector(state => state.files.dirStack)
+   const loader = useSelector(state => state.app.loader)
    const [dragEnter, setDragEnter] = useState(false)
    const [sort, setSort] = useState('type')
 
@@ -60,6 +61,13 @@ const Disk = () => {
       setDragEnter(false)
    }
 
+   if (loader) {
+      return (
+         <div className={styles.loader}>
+            <div className={styles.lds_ripple}><div></div><div></div></div>
+         </div>
+      )
+   }
    return (!dragEnter ?
       <div className={styles.disk} onDragEnter={dragEnterHandler} onDragLeave={dragLeaveHandler} onDragOver={dragOverHandler}>
          <div className={styles.btns}>
