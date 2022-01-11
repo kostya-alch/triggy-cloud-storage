@@ -4,10 +4,14 @@ import File from '../File/File'
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 import styles from './FileList.module.scss'
+
 const FileList = () => {
 
    const files = useSelector(state => state.files.files)
 
+   if (files.length === 0) {
+      return (<div className={styles.warning_files}>Файлы не найдены!</div>)
+   }
    return (
       <div className={styles.filelist}>
          <div className={styles.header}>

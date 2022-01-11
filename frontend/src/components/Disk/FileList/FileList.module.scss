@@ -33,3 +33,12 @@
     transform: translateY(0);
   }
 }
+
+.warning_files {
+  display: flex;
+  font-weight: 600;
+  font-size: 30px;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 50px);
+}
