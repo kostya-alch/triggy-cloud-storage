@@ -26,8 +26,8 @@ export const login = (email, password) => {
           password,
         }
       );
-      dispatch(setUserActionCreator(response.data.user));
       localStorage.setItem('token', response.data.token);
+      dispatch(setUserActionCreator(response.data.user));
     } catch (e) {
       alert(e.response.data.message);
     }

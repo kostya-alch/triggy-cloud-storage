@@ -2,5 +2,5 @@
   "serverPort": 5000,
   "dbUrl": "mongodb+srv://furakun:34mo56@cloud.nhfdt.mongodb.net/cloud?retryWrites=true&w=majority",
   "secretKey": "mern-secret-key",
-  "filePath": "D:\\triggi-cloud-storage\\backend\\files"
+  "filePath": "D:\\triggy-cloud-storage\\backend\\files"
 }
