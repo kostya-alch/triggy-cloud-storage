@@ -80,7 +80,8 @@ const Disk = () => {
             <select
                value={sort}
                onChange={(e) => setSort(e.target.value)}
-               className={styles.select}>
+               className={styles.select}
+               style={{ marginLeft: '10px' }}>
                <option value="name">По имени</option>
                <option value="type">По типу</option>
                <option value="date">По дате</option>

@@ -13,11 +13,7 @@ import {
   changeUploadActionCreator,
   showUploadActionCreator,
 } from '../reducers/uploadReducer';
-
-export const instanceAxios = axios.create({
-  baseURL: 'http://localhost:5000/api/',
-  headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-});
+import { instanceAxios } from '../utils/instanceAxios';
 
 export function getFiles(dirId, sort) {
   return async (dispatch) => {
@@ -98,7 +94,7 @@ export function uploadFile(file, dirId) {
 
 export async function downloadFile(file) {
   const response = await fetch(
-    `http://localhost:5000/api/files/download?id=${file._id}`,
+    `http://localhost:3000/api/files/download?id=${file._id}`,
     {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
