@@ -4,15 +4,31 @@ import Logo from '../../assets/img/logo.svg'
 import { NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { logoutActionCreator } from '../../reducers/userReducer'
-import { searchFile } from '../../actions/file'
+import { getFiles, searchFile } from '../../actions/file'
+import { showLoaderActionCreator } from '../../reducers/appReducer'
 const Navbar = () => {
    const isAuth = useSelector(state => state.user.isAuth)
+   const currentDir = useSelector(state => state.files.currentDir)
    const dispatch = useDispatch()
    const [searchName, setSearchName] = useState('')
+   const [searchTimeout, setSearchTimeout] = useState(false)
 
    const searchNameHandler = (event) => {
       setSearchName(event.target.value)
-      dispatch(searchFile(event.target.value ))
+      if (searchTimeout !== false) {
+         clearTimeout(searchTimeout)
+      }
+      dispatch(showLoaderActionCreator())
+      if (event.target.value !== '') {
+         setSearchTimeout(setTimeout(() => {
+            dispatch(searchFile(event.target.value))
+         }, 500))
+      } else {
+         dispatch(getFiles(currentDir))
+      }
+      // каждый раз когда мы очищаем инпут, у нас очищается таймаут 
+      // и запрос на сервер улетает один раз, если в инпут больше ничего не ввели
+
    }
    return (
       <div className={styles.navbar}>

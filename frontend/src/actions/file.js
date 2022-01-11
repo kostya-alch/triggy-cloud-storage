@@ -151,6 +151,8 @@ export function searchFile(search) {
       alert(response.data.message);
     } catch (e) {
       alert(e?.response?.data?.message);
+    } finally {
+      dispatch(hideLoaderActionCreator());
     }
   };
 }
