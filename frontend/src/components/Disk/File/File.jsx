@@ -8,6 +8,7 @@ import deleteBtn from '../../../assets/img/delete.svg'
 
 import styles from './File.module.scss'
 import { deleteFile, downloadFile } from '../../../actions/file'
+import sizeFormator from '../../../utils/sizeFormator'
 
 const File = ({ file }) => {
    const dispatch = useDispatch()
@@ -34,7 +35,7 @@ const File = ({ file }) => {
             alt="File" className={styles.img} />
          <div className={styles.name}>{file.name}</div>
          <div className={styles.date}>{file.date.slice(0, 10)}</div>
-         <div className={styles.size}>{file.size}</div>
+         <div className={styles.size}>{sizeFormator(file.size)}</div>
          {file.type !== 'dir' && <button onClick={(event) => downloadClickHandler(event)} className={[styles.btn, styles.download].join(' ')}>
             <img src={downloadBtn} alt="Скачать" />
          </button>}
