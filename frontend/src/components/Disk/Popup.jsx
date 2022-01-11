@@ -22,18 +22,23 @@ const Popup = () => {
       <div className={styles.popup}
          style={{ display: popupDisplay }}
          onClick={() => dispatch(setPopupActionCreator('none'))}>
-         <div className={styles.content} onClick={(event) => event.stopPropagation()}>
+         <div className={styles.content}
+            onClick={(event) => event.stopPropagation()}
+         >
             <div className={styles.header}>
                <div className={styles.title}>Создать новую папку</div>
-               <button onClick={() => dispatch(setPopupActionCreator('none'))}
-                  className={styles.close}>X</button>
+               <button
+                  onClick={() => dispatch(setPopupActionCreator('none'))}
+                  className={styles.close}>X
+               </button>
             </div>
             <Input type='text'
                placeholder='Введите название папки'
                value={dirname}
                setValue={setDirname}
             />
-            <button className={styles.create} onClick={() => createHandler()}>Создать</button>
+            <button className={styles.create}
+               onClick={() => createHandler()}>Создать</button>
          </div>
       </div>
    )

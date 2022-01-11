@@ -10,9 +10,17 @@ const Registration = () => {
    return (
       <div className={styles.registration}>
          <div className={styles.header}>Регистрация</div>
-         <Input value={email} setValue={setEmail} type='text' placeholder='Введите email' />
-         <Input value={password} setValue={setPassword} type='password' placeholder='Введите пароль' />
-         <button className={styles.btn} onClick={() => registration(email, password)}>Зарегистрироваться</button>
+         <Input value={email}
+            setValue={setEmail}
+            type='text'
+            placeholder='Введите email' />
+         <Input
+            value={password}
+            setValue={setPassword}
+            type='password'
+            placeholder='Введите пароль' />
+         <button className={styles.btn}
+            onClick={() => registration(email, password)}>Зарегистрироваться</button>
       </div>
    )
 }

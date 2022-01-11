@@ -11,9 +11,18 @@ const Login = () => {
    return (
       <div className={styles.auth}>
          <div className={styles.header}>Авторизация</div>
-         <Input value={email} setValue={setEmail} type='text' placeholder='Введите email' />
-         <Input value={password} setValue={setPassword} type='password' placeholder='Введите пароль' />
-         <button className={styles.btn} onClick={() => dispatch(login(email, password))}>Войти</button>
+         <Input
+            value={email}
+            setValue={setEmail}
+            type='text'
+            placeholder='Введите email' />
+         <Input
+            value={password}
+            setValue={setPassword}
+            type='password'
+            placeholder='Введите пароль' />
+         <button className={styles.btn}
+            onClick={() => dispatch(login(email, password))}>Войти</button>
       </div>
    )
 }

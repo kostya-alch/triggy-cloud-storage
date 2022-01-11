@@ -12,9 +12,12 @@ const Navbar = () => {
          <div className={styles.container}>
             <img src={Logo} alt="Site Logo" className={styles.logo} />
             <div className={styles.header}>TRIGGY CLOUD</div>
-            {!isAuth && <div className={styles.login}><NavLink style={{ textDecoration: 'none' }} to="/login">Войти</NavLink></div>}
-            {!isAuth && <div className={styles.registration}><NavLink style={{ textDecoration: 'none' }} to="/registration">Регистрация</NavLink></div>}
-            {isAuth && <div className={styles.login} onClick={() => dispatch(logoutActionCreator())}>Выйти</div>}
+            {!isAuth &&
+               <div className={styles.login}><NavLink style={{ textDecoration: 'none' }} to="/login">Войти</NavLink></div>}
+            {!isAuth
+               && <div className={styles.registration}><NavLink style={{ textDecoration: 'none' }} to="/registration">Регистрация</NavLink></div>}
+            {isAuth
+               && <div className={styles.login} onClick={() => dispatch(logoutActionCreator())}>Выйти</div>}
          </div>
       </div >
    )

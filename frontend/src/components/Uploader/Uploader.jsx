@@ -13,7 +13,8 @@ const Uploader = () => {
       <div className={styles.uploader}>
          <div className={styles.header}>
             <div className={styles.title}>Загрузки</div>
-            <button className={styles.close} onClick={() => dispatch(hideUploadActionCreator())}>X</button>
+            <button className={styles.close}
+               onClick={() => dispatch(hideUploadActionCreator())}>X</button>
          </div>
          {files.map(file =>
             <UploadFile key={file.id} file={file} />

@@ -13,10 +13,12 @@ const UploadFile = ({ file }) => {
             <div className={styles.upload_name}>
                {file.name}
             </div>
-            <button className={styles.remove} onClick={() => dispatch(removeUploadActionCreator(file.id))}>X</button>
+            <button className={styles.remove} 
+            onClick={() => dispatch(removeUploadActionCreator(file.id))}>X</button>
          </div>
          <div className={styles.upload_progress_bar}>
-            <div className={styles.upload_bar} style={{ width: file.progress + "%" }}></div>
+            <div className={styles.upload_bar} 
+            style={{ width: file.progress + "%" }}></div>
             <div className={styles.upload_percent}>{file.progress}%</div>
          </div>
       </div>

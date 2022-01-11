@@ -30,16 +30,24 @@ const File = ({ file }) => {
       dispatch(deleteFile(file))
    }
    return (
-      <div className={styles.file} onClick={() => openDirHandler(file)}>
-         <img src={file.type === 'dir' ? dirLogo : fileLogo}
-            alt="File" className={styles.img} />
+      <div className={styles.file}
+         onClick={() => openDirHandler(file)}>
+         <img
+            src={file.type === 'dir' ? dirLogo : fileLogo}
+            alt="File"
+            className={styles.img} />
          <div className={styles.name}>{file.name}</div>
          <div className={styles.date}>{file.date.slice(0, 10)}</div>
          <div className={styles.size}>{sizeFormator(file.size)}</div>
-         {file.type !== 'dir' && <button onClick={(event) => downloadClickHandler(event)} className={[styles.btn, styles.download].join(' ')}>
-            <img src={downloadBtn} alt="Скачать" />
-         </button>}
-         <button className={[styles.btn, styles.delete].join(' ')} onClick={(event) => deleteClickHandler(event)}>
+         {file.type !== 'dir' &&
+            <button
+               onClick={(event) => downloadClickHandler(event)}
+               className={[styles.btn, styles.download].join(' ')}>
+               <img src={downloadBtn} alt="Скачать" />
+            </button>}
+         <button
+            className={[styles.btn, styles.delete].join(' ')}
+            onClick={(event) => deleteClickHandler(event)}>
             <img src={deleteBtn} alt="Удалить" />
          </button>
       </div>
