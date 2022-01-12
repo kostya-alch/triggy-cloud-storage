@@ -69,7 +69,10 @@ const Disk = () => {
       )
    }
    return (!dragEnter ?
-      <div className={styles.disk} onDragEnter={dragEnterHandler} onDragLeave={dragLeaveHandler} onDragOver={dragOverHandler}>
+      <div className={styles.disk}
+         onDragEnter={dragEnterHandler}
+         onDragLeave={dragLeaveHandler}
+         onDragOver={dragOverHandler}>
          <div className={styles.btns}>
             {currentDir && <button className={styles.disk_back} onClick={() => backClickHandler()}>Назад</button>}
             <button className={styles.disk_create} onClick={() => showPopupHandler()}>Создать папку</button>
