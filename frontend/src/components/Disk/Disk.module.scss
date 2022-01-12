@@ -16,6 +16,26 @@
       cursor: pointer;
       margin-left: 10px;
     }
+    .select {
+      margin-left: auto;
+    }
+    .plate,
+    .list {
+      width: 20px;
+      height: 20px;
+      outline: none;
+      border: none;
+      cursor: pointer;
+      background: no-repeat center center;
+      background-size: contain;
+      margin: 0 10px;
+    }
+    .plate {
+      background-image: url('../../assets/img/plate.svg');
+    }
+    .list {
+      background-image: url('../../assets/img//list1.svg');
+    }
   }
 
   .disk_create {

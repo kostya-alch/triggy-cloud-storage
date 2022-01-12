@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getFiles, uploadFile } from '../../actions/file'
+import { setViewActionCreator } from '../../reducers/appReducer'
 import { currentDirActionCreator, setPopupActionCreator } from '../../reducers/fileReducer'
 import Uploader from '../Uploader/Uploader'
 
@@ -12,29 +13,30 @@ import Popup from './Popup'
 
 const Disk = () => {
    const dispatch = useDispatch()
-   const currentDir = useSelector(state => state.files.currentDir)
-   const dirStack = useSelector(state => state.files.dirStack)
-   const loader = useSelector(state => state.app.loader)
-   const [dragEnter, setDragEnter] = useState(false)
-   const [sort, setSort] = useState('type')
+   const currentDir = useSelector(state => state.files.currentDir) // вытащили состояние из редьюсера
+   const dirStack = useSelector(state => state.files.dirStack) // вытащили состояние из редьюсера
+   const loader = useSelector(state => state.app.loader)  // вытащили состояние из редьюсера
+   const [dragEnter, setDragEnter] = useState(false) // состояние драг-дропа
+   const [sort, setSort] = useState('type') // состояние выбора сортировки
 
    useEffect(() => {
       dispatch(getFiles(currentDir, sort))
    }, [currentDir, dispatch, sort])
-
+   // каждый раз подтягивает на страницу файлы, если 
+   // изменилась директория или сортировка
    const showPopupHandler = () => {
       dispatch(setPopupActionCreator('flex'))
    }
    const backClickHandler = () => {
       const backDirId = dirStack.pop()
       dispatch(currentDirActionCreator(backDirId))
-   }
+   } // обработчик кнопки назад
 
    const fileUploadHandler = (event) => {
       const files = [...event.target.files]
       files.forEach(file => dispatch(uploadFile(file, currentDir)))
    }
-
+   // обработчики драг-дропа
    const dragEnterHandler = (event) => {
       event.preventDefault()
       event.stopPropagation()
@@ -60,8 +62,9 @@ const Disk = () => {
       files.forEach(file => dispatch(uploadFile(file, currentDir)))
       setDragEnter(false)
    }
+   // обработчики драг-дропа
 
-   if (loader) {
+   if (loader) { // условие показа лоадера
       return (
          <div className={styles.loader}>
             <div className={styles.lds_ripple}><div></div><div></div></div>
@@ -83,12 +86,13 @@ const Disk = () => {
             <select
                value={sort}
                onChange={(e) => setSort(e.target.value)}
-               className={styles.select}
-               style={{ marginLeft: '10px' }}>
+               className={styles.select}>
                <option value="name">По имени</option>
                <option value="type">По типу</option>
                <option value="date">По дате</option>
             </select>
+            <button className={styles.plate} onClick={() => dispatch(setViewActionCreator('plate'))} />
+            <button className={styles.list} onClick={() => dispatch(setViewActionCreator('list'))} />
          </div>
          <FileList />
          <Popup />
