@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styles from './Navbar.module.scss'
-import Logo from '../../assets/img/logo.svg'
+import Logo from '../../assets/img/logo1.png'
 import { NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { logoutActionCreator } from '../../reducers/userReducer'
