@@ -11,3 +11,5 @@ export default (size) => {
   }
   return size + 'B';
 };
+
+// функция для подсчета размера файла

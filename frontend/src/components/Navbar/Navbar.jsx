@@ -41,7 +41,9 @@ const Navbar = () => {
       <div className={styles.navbar}>
          <div className={styles.container}>
             <img src={Logo} alt="Site Logo" className={styles.logo} />
-            <div className={styles.header}>TRIGGY CLOUD</div>
+            <NavLink style={{ textDecoration: 'none' }} to='/'>
+               <div className={styles.header}>TRIGGY CLOUD</div>
+            </NavLink>
             {isAuth &&
                <input
                   value={searchName}
