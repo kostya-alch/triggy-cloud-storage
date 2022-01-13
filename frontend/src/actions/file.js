@@ -116,14 +116,7 @@ export async function downloadFile(file) {
 export function deleteFile(file) {
   return async (dispatch) => {
     try {
-      const response = await axios.delete(
-        `http://localhost:5000/api/files?id=${file._id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-          },
-        }
-      );
+      const response = await instanceAxios.delete(`files?id=${file._id}`);
       dispatch(deleteFileActionCreator(file._id));
       alert(response.data.message);
     } catch (e) {
@@ -135,14 +128,7 @@ export function deleteFile(file) {
 export function searchFile(search) {
   return async (dispatch) => {
     try {
-      const response = await axios.get(
-        `http://localhost:5000/api/files/search?search=${search}`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-          },
-        }
-      );
+      const response = await instanceAxios.get(`files/search?search=${search}`);
       dispatch(setFileActionCreator(response.data));
       alert(response.data.message);
     } catch (e) {

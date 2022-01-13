@@ -7,6 +7,7 @@ import { logoutActionCreator } from '../../reducers/userReducer'
 import { getFiles, searchFile } from '../../actions/file'
 import { showLoaderActionCreator } from '../../reducers/appReducer'
 const Navbar = () => {
+
    const isAuth = useSelector(state => state.user.isAuth)
    const currentDir = useSelector(state => state.files.currentDir)
    const dispatch = useDispatch()
@@ -41,7 +42,7 @@ const Navbar = () => {
                   onChange={(event) => searchNameHandler(event)}
                   type='text'
                   className={styles.search_file}
-                  placeholder='Поиск по файлам' />}
+                  placeholder='Поиск по файлам...' />}
             {!isAuth &&
                <div className={styles.login}><NavLink style={{ textDecoration: 'none' }} to="/login">Войти</NavLink></div>}
             {!isAuth
@@ -52,5 +53,4 @@ const Navbar = () => {
       </div >
    )
 }
-
 export default Navbar

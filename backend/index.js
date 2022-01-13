@@ -13,6 +13,7 @@ app.use(corsMiddleware);
 app.use(express.json());
 app.use('/api/auth', authRouter);
 app.use('/api/files', fileRouter);
+app.use(express.static('static'));
 
 const start = async () => {
   try {
