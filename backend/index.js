@@ -11,9 +11,9 @@ const corsMiddleware = require('./middleware/cors.middleware');
 app.use(fileUploader({}));
 app.use(corsMiddleware);
 app.use(express.json());
+app.use(express.static('static'));
 app.use('/api/auth', authRouter);
 app.use('/api/files', fileRouter);
-app.use(express.static('static'));
 
 const start = async () => {
   try {
